@@ -3,10 +3,10 @@
 
 Global Const $INI_SETTINGS_FILE = @ScriptDir & "\ADB Message Notification Center.ini"
 
-Example()
+_ParseSettings()
 
 
-Func Example()
+Func _ParseSettings()
 	If Not FileExists($INI_SETTINGS_FILE) Then _CreateDefaultSettings()
 
 	; Read the INI section labelled 'General'. This will return a 2 dimensional array.
@@ -20,7 +20,7 @@ Func Example()
 			MsgBox($MB_SYSTEMMODAL, "", "Key: " & $aArray[$i][0] & @CRLF & "Value: " & $aArray[$i][1])
 		Next
 	EndIf
-EndFunc   ;==>Example
+EndFunc   ;==>_ParseSettings
 
 Func _CreateDefaultSettings()
 	; Create an INI section structure as a string.
@@ -29,6 +29,6 @@ Func _CreateDefaultSettings()
 
 	; Write the string to the section labelled 'Radio'.
 	IniWriteSection($INI_SETTINGS_FILE, "Radio", $SMS_INI)
-	FileWrite($INI_SETTINGS_FILE,@CRLF)
+	FileWrite($INI_SETTINGS_FILE, @CRLF)
 	IniWriteSection($INI_SETTINGS_FILE, "Logcat", $Logcat_INI)
 EndFunc   ;==>_CreateDefaultSettings
