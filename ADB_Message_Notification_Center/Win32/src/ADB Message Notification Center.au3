@@ -14,7 +14,7 @@ Opt("TrayMenuMode", 1)
 Opt("TrayOnEventMode", 1)
 $Start_Time = _Now()
 ConsoleWrite("--Start Time: " & $Start_Time & @CRLF)
-TraySetIcon("envelope.ico")
+TraySetIcon("Notify.ico")
 TraySetToolTip($PROGRAM_NAME & " (v" & FileGetVersion(@ScriptFullPath) & ")" & @CRLF & "No New Messages")
 TrayCreateItem("Exit")
 TrayItemSetOnEvent(-1, "Terminate")
@@ -64,6 +64,18 @@ Func _ReLaunch()
 	ConsoleWrite("[" & $hPID & "]" & @CRLF)
 	Return $hPID
 EndFunc   ;==>_ReLaunch
+
+Func _CreateDefaultSettings()
+	; Create an INI section structure as a string.
+	$SMS_INI = "New SMS Message=< SMS_ACKNOWLEDGE"
+	$Logcat_INI = "New TextPlus Message=Displayed com.gogii.textplus"
+
+	; Write the string to the section labelled 'Radio'.
+	IniWriteSection($INI_SETTINGS_FILE, "Radio", $SMS_INI)
+	FileWrite($INI_SETTINGS_FILE, @CRLF)
+	IniWriteSection($INI_SETTINGS_FILE, "Logcat", $Logcat_INI)
+EndFunc   ;==>_CreateDefaultSettings
+
 
 
 Func _ReduceMemory($i_PID = -1)
