@@ -78,21 +78,21 @@ EndFunc   ;==>_CreateDefaultSettings
 
 
 Func _Array2DAppend(ByRef $aArray, ByRef $aArray2)
-	;;;;
-	;Appends two 2D arrays
-	;Appends Content of Array2 to Array
-	;Size does not matter, will adapt to larger array width
-	If UBound($aArray, 2) < UBound($aArray2, 2) Then
+;;;
+;Appends two 2D arrays
+;Appends Content of Array2 to Array
+;Size does not matter, will adapt to larger array width
+If UBound($aArray, 2) < UBound($aArray2, 2) Then
 		;$aArray2 is Boss (Wider)
 		ReDim $aArray[UBound($aArray, 1)][UBound($aArray2, 2)];Resize First array to "width" of Array2
 	EndIf
 
-	For $x = 0 To UBound($aArray2, 1) - 1;Loop through Array2 length
-		ReDim $aArray[UBound($aArray, 1) + 1][UBound($aArray, 2)];Add Row to Array
-		For $y = 0 To UBound($aArray2, 2) - 1;Add column data
-			$aArray[UBound($aArray, 1) - 1][$y] = $aArray2[$x][$y]
+		For $x = 0 To UBound($aArray2, 1) - 1;Loop through Array2 length
+			ReDim $aArray[UBound($aArray, 1) + 1][UBound($aArray, 2)];Add Row to Array
+			For $y = 0 To UBound($aArray2, 2) - 1;Add column data
+				$aArray[UBound($aArray, 1) - 1][$y] = $aArray2[$x][$y]
+			Next
 		Next
-	Next
 EndFunc   ;==>_Array2DAppend
 
 Func _ReduceMemory($i_PID = -1)
