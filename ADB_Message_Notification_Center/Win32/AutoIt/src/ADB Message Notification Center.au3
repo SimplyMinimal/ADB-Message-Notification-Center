@@ -50,7 +50,7 @@ While True
 		$New_Message_Count += 1
 		TraySetToolTip("Running since: " & $Start_Time & @CRLF & "New Message Counter: " & $New_Message_Count & @CRLF & "Last Message at " & _NowTime())
 		_Notify_Set(0, Default, Default, "Courier New", False, 250)
-		_Notify_Show(@ScriptDir & "\envelope.png", "", "New Message", 20)
+		_Notify_Show(@ScriptDir & "\Notify.ico", "", "New Message", 20)
 	EndIf
 	$data = ""
 	If $Counter > 50 Then
