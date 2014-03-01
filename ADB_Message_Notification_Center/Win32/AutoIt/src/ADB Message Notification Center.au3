@@ -10,6 +10,8 @@
 #include <Misc.au3>
 
 Global Const $PROGRAM_NAME = "ADB Message Notification Center"
+Global Const $INI_SETTINGS_FILE = @ScriptDir & "\ADB Message Notification Center.ini"
+
 Opt("TrayMenuMode", 1)
 Opt("TrayOnEventMode", 1)
 $Start_Time = _Now()
