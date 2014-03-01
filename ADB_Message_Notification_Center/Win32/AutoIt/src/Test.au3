@@ -11,7 +11,7 @@ Func _ParseSettings()
 
 	; Read the INI section labelled 'General'. This will return a 2 dimensional array.
 	Local $aArray = IniReadSection($INI_SETTINGS_FILE, "Radio")
-	_ArrayDisplay($aArray)
+	Local $aArray = IniReadSection($INI_SETTINGS_FILE, "Logcat")
 
 	; Check if an error occurred.
 	If Not @error Then
