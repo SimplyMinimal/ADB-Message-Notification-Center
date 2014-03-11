@@ -1,0 +1,18 @@
+===============================================================================
+READ ME
+
+
+-=- Prerequisite -=-
+
+- Growl from http://growl.info/downloads
+
+
+-=- Steps -=-
+
+1) Download and install growl from above link for your appropriate Mac OS X version. Growl allows you to receive notifications. 
+
+2) Inside the extra folder there should be growlnotify. Install it. This is required for the script to send you notifications through Growl.
+
+
+
+
