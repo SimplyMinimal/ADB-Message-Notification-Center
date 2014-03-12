@@ -1,0 +1,7 @@
+#########################################################################################
+Dev Tools Read Me
+
+The collection of tools in this directory was originally used for debugging my Android phone when it would randomly reboot.
+
+This is particularly useful as you may have noticed that logcat is erased upon reboot. With these scripts running, if your device reboots then simply remove the usb cable and look at the last few lines
+that may show a clue to the root cause to the random reboot.
