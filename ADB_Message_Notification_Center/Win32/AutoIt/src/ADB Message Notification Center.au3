@@ -20,7 +20,7 @@ TrayCreateItem("Exit")
 TrayItemSetOnEvent(-1, "Terminate")
 
 If _Singleton($PROGRAM_NAME, 1) == 0 Then
-	MsgBox(48, $PROGRAM_NAME & " - Warning", "An occurence of " & @ScriptName & " is already running.")
+	MsgBox(48, $PROGRAM_NAME & " - Warning", "An occurrence of " & @ScriptName & " is already running.")
 	Exit
 EndIf
 
