@@ -8,7 +8,7 @@ PROGRAM_NAME = "ADB Message Notification Center"
 #Relaunches ADB in event of device disconnect
 def _ReLaunch():
     print "[+] Relaunching..."
-    (stdout, stderr) = Popen(["ls","-la"], stdout=PIPE).communicate()
+    (stdout, stderr) = Popen(["adb","logcat -b radio"], stdout=PIPE).communicate()
     print stdout
 
 def _NowTime():
