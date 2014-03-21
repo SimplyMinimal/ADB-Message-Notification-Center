@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import os
 from subprocess import Popen, PIPE
 from datetime import datetime
 import objc
@@ -15,12 +16,15 @@ def _ReLaunch():
     (stdout, stderr) = Popen(["adb","logcat -b radio"], stdout=PIPE).communicate()
     print stdout
 
+def _Notify_Show(sIcon,sName,sMessage):
+    print "Showing Notification"
+    os.system("growlnotify --image \""+sIcon+"\" -t \"" + sName + "\" -m \""+ sMessage + "\"")
+
 def _NowTime():
     i = datetime.now()
     return i.strftime('%I:%M:%S %p  %m/%d/%Y')
 
 class TrayStatusBar(NSApplication):
-
     def finishLaunching(self):
         # Make statusbar item
         statusbar = NSStatusBar.systemStatusBar()
@@ -33,24 +37,28 @@ class TrayStatusBar(NSApplication):
         #make the menu
         self.menubarMenu = NSMenu.alloc().init()
 
-        self.menuItem = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_('Click Me', 'clicked:', '')
-        self.menubarMenu.addItem_(self.menuItem)
+        #self.menuItem = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_('Click Me', 'clicked:', '')
+        #self.menubarMenu.addItem_(self.menuItem)
 
         self.quit = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_('Quit', 'terminate:', '')
         self.menubarMenu.addItem_(self.quit)
 
         #add menu to statusitem
         self.statusitem.setMenu_(self.menubarMenu)
-        self.statusitem.setToolTip_('My App')
+        self.statusitem.setToolTip_(PROGRAM_NAME)
+
+    def TraySetToolTip(self, sString):
+        self.setToolTip_(sString)
+        print "Changing ToolTip"
 
     def clicked_(self, notification):
         NSLog('clicked!')
-
 
 if __name__ == "__main__":
     print "-=="+PROGRAM_NAME+"==-"
     print "Start Time: "+_NowTime()
     app = TrayStatusBar.sharedApplication()
+    #_ReLaunch()
+    #app.TraySetToolTip("Hello World")
+    _Notify_Show("Notify.ico","Hello World","Message")
     AppHelper.runEventLoop()
-    _ReLaunch()
-
