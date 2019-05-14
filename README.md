@@ -1,6 +1,10 @@
 ADB Message Notification Center
 ===============================
 
+![NotificationScreenshot](https://raw.githubusercontent.com/SimplyMinimal/ADB-Message-Notification-Center/master/Notify-810x298_c.jpg)
+
+
+
 Get instant Android notifications on your desktop over ADB
 (Formerly ADB SMS Notify)
 
